@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reversing Computers</title>
+    <style>
+        body {
+            background-color: #454545;
+            background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 1000px; /* Set a maximum width for the content */
+            margin: 0 auto; /* This centers the container horizontally */
+            text-align: center;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #444444;
+            padding: 20px;
+            border: 5px solid #555555;
+            margin-bottom: 20px;
+            box-shadow: 10px 10px 10px 0 black;
+        }
+
+        h1 {
+            font-size: 48px;
+            text-shadow: 2px 2px 5px #222222;
+            color: #FFFFFF;
+        }
+
+        .content {
+            background-color: #555555;
+            border: 5px solid #666666;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 10px 10px 10px black;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #FFFFFF;
+            text-decoration: underline;
+            text-transform: uppercase;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        ul li {
+            font-size: 18px;
+            color: #DDDDDD;
+            background-color: #444444;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 2px solid #555555;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        ul li:hover {
+            background-color: #666666;
+        }
+
+        .gif-box {
+            background-color: black;
+            border: 2px solid #777777;
+            padding: 15px;
+            margin: 15px 0;
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .gif-box img {
+            width: 25%;
+            max-width: 300px;
+        }
+
+        a {
+            color: #BBBBBB;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #FFFFFF;
+        }
+
+        .panel {
+            display: none;
+            padding: 10px;
+            background-color: #666666;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #777777;
+            color: #DDDDDD;
+        }
+
+        .code-box {
+            border: 2px inset #444444; /* Inset border with a darker color */
+            padding: 15px;
+            margin: 20px 0;
+            background-color: #2c2c2c; /* Dark background for the code box */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000000;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 10px;
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+        }
+
+        .ticker-text {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%; /* Start the text off-screen */
+            animation: ticker 35s linear infinite; /* Adjust timing to change speed */
+        }
+
+        /* Animation for scrolling effect */
+        @keyframes ticker {
+            0% {
+                transform: translateX(100%); /* Start at the far right */
+            }
+            100% {
+                transform: translateX(-100%); /* Move to the far left */
+            }
+        }
+
+        /* Optional: Make text more "retro" */
+        .footer {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Initial style for the image */
+        ul img {
+        transition: transform 0.3s ease; /* Smooth transition for resizing */
+        }
+
+        /* Enlarge the image when hovered */
+        ul img:hover {
+        transform: scale(1.5); /* Scale the image to 120% of its original size */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <!-- GIF Box 1 -->
+            <h1>
+                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/542e9975-e6a8-4c43-a772-059cbf61b788/df5ktfm-0a299c58-0ef9-4756-8bb6-3e918165ae4c.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzU0MmU5OTc1LWU2YTgtNGM0My1hNzcyLTA1OWNiZjYxYjc4OFwvZGY1a3RmbS0wYTI5OWM1OC0wZWY5LTQ3NTYtOGJiNi0zZTkxODE2NWFlNGMuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.K35Te3w7daxK0KK1XC_fA2aMf5MhcRH5kI5aAq_ACJg">
+                Reverse Engineering 101!
+                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5552cb82-6fb8-4c7f-9d29-a10b2e5daf6c/dbjg7zj-21f53151-e317-41dd-ae80-8f5d88ead1eb.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzU1NTJjYjgyLTZmYjgtNGM3Zi05ZDI5LWExMGIyZTVkYWY2Y1wvZGJqZzd6ai0yMWY1MzE1MS1lMzE3LTQxZGQtYWU4MC04ZjVkODhlYWQxZWIuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.rQju-U7Allxz06dXseI17xmvk0faYZ0EdpFp1MQBxnI">
+                <div class="gif-box">
+                    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXR0dGtjZXg1cno2MWpxdHZleXBzamRsN3RuNWdoc2l2OXFxMTBmNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/uhhEKTfedQowM/giphy.webp" alt="90s Animated GIF 2">
+                    <img src="https://64.media.tumblr.com/13cfdf96453303a0765584f9daeb23a6/9351057c85de7b88-29/s400x600/18e1d364d585b7edff5290e7fa33a13bc91b14ce.gif" alt="90s Animated GIF 1">
+                    <img src="https://i.pinimg.com/originals/1a/ce/b6/1aceb69476896bfea27f3fecbab74450.gif" alt="90s Animated GIF 2">
+                </div>
+            </h1>
+        </div>
+
+        <div class="content">
+            <h2>About This Webpage</h2>
+            <p style="text-align: justify;">This is a webpage designed to teach the basics on reverse engineering programs. This assumes you already know basic C progamming and how to compile into executables. It is for educational purposes only.</p>
+            <img src="https://cdnb.artstation.com/p/assets/images/images/055/840/231/original/alexandre-etendard-360.gif?1667870399" width="25%" alt="90s Animated GIF 2">
+            <h2>Topics In Order</h2>
+            <ul>
+                <li onclick="togglePanel('feature1')">printf("Hello World")</li>
+                <div id="feature1" class="panel" style="text-align: left;">
+                    <p>In this section, we’ll explore reversing everyone's first program, printing a simple "Hello World" message in C. This is the foundation of many programming tutorials, and it’s often the first program you’ll write when learning a new language. Below is the basic C code that accomplishes this:</p>
+                    <div class="code-box">
+                        <p><span style="color: purple;">#include</span> <span style="color: orangered">&lt;stdio.h&gt;</span></p>
+                        <p><span style="color: purple;">#include</span> <span style="color: orangered">&lt;stdlib.h&gt;</span></p>
+                        <br>
+                        <p><span style="color: rgb(112, 123, 214)">int</span> <span style="color: yellow">main(</span><span style="color: rgb(112, 123, 214)">int</span> <span style="color: skyblue">argc</span>, <span style="color: rgb(112, 123, 214)">char</span> <span style="color: skyblue">**argv</span><span style="color: yellow">) {</span></p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: rgb(112, 123, 214)">char</span> <span style="color: skyblue">msg</span><span style="color: purple;">[</span><span style="color: lightgreen;">14</span><span style="color: purple;">]</span> = <span style="color: orangered">"Hello world!\n"</span>;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: yellow">printf</span><span style="color: purple;">(</span><span style="color: skyblue">msg</span><span style="color: purple;">)</span>;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: yellow">system</span><span style="color: purple;">(</span><span style="color: orangered">"pause"</span><span style="color: purple;">)</span>;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: purple">return</span> <span style="color: lightgreen">0</span>;</p>
+                        <p><span style="color: yellow">}</span></p>
+                    </div>
+                    <p>As simple as it is, this small piece of code is the gateway to understanding how programs interact with the system to output data to the user! You can see below what the program will look like once compiled and ran.</p>
+                    <img src="images/running_printf.png" width="100%">
+                    <p>In this first screenshot of the program running, we can see it paused at the entry point in a debugger. The program has hit a breakpoint right at the start, before any code executes. This is a crucial moment for understanding how the program begins, as the debugger allows us to inspect the initial state of variables, memory, and the execution flow. This screenshot marks the first step in exploring the program's behavior from the very beginning.</p>
+                    <img src="images/entrypoint.png" width="100%">
+                    <p>Now in this next one we've stepped through the program to a point where the code is now displayed in assembly language. This is the low-level execution of the program after it has passed through the initial setup and initialization stages. Upon launching an executable, the operating system loads the program into memory, sets up the necessary environment, and then creates a thread to begin execution. The entry point of the program is where execution starts, what you've stepped through are the initalization functions setup by the operating system.</p>
+                    <img src="images/program_in_assembly.png" width="100%">
+                    <p>You can now see the the program as a whole. You can make out some of the functions in the C code such as printf and system. Go ahead and step all the way down to the instruction in 0x7FFC6CBE81707. The instruction 2 above this one is reading the msg variable "Hello World!\n" from memory.  [rbp - E] is the memory address of where that variable is written. You can see below it was loaded into RAX (in the top right) and view what it looks like in memory at the bottom. Bonus: You can add 0xE to the memory address at the bottom to get the hex value in RBP.</p>
+                    <img src="images/helloworldloaded.png" width="100%">
+                    <p>So once you've analyzed your C program in the debugger step into the first printf function. This is our program calling printf() you will notice there are now 2 functions inside of it as well. One is acrt_iob_func and sdtio_common_vfprintf. The acrt_iob_function handles I/O streams, so for this program we are printing out to the console so it will handle the ouput stream. This function utilizes the structures stdout, stdin, stderr. The second sdtio_common_vfprintf looks alot like printf, so you might be wondering why there is another printf inside the original one. Well our printf() in the C program calls to a lower level printf function which is what you're viewing there. You can conclude from this image that C's printf function takes care of the stream initializing and runs the printf function from the sdtio.h library.</p>
+                    <img src="images/stepintoprintf.png" width="100%">
+                    <p>Lets step down to the second printf function, you can view on the right hand side the stack pointer is pointing to the stack where the printf function has been pushed. This is in prepration for executing the function.</p>
+                    <img src="images/stepintoprintf_stack.png" width="100%">
+                    <p>Now this jump will take us to the stdio.h library. You can view all the other functions associated with the libraries we've loaded into our program. You can see these have been loaded into memory and this is where they can be jumped from to get to their function code.</p>
+                    <img src="images/different_functions_within_the_libs.png" width="100%">
+                    <p>And when we step on more time we can now view the assembly for the stdio_commmon_vprintf function. You may notice a lot of new calls with a new libray. Ucrtbase is listed multiple times in this program. Ucrtbase is Universal C Runtime which is part of Microsoft's implementation of the C Runtime Library. This is specific to windows and is to ensure that windows applications across the board had a standard runtime library to be compatible across various Mircosoft tools. It has all the same functionalities of the original C runtime library as well, it does all the similar things like malloc, free, caclloc, printf, scanf, puts, strcpy, strlen, strcat etc.</p>
+                    <img src="images/inside_stdio_printf.png" width="100%">
+                    <p>So now follow along as to which ucrtbase's I step into, this is the first one we'll step into.</p>
+                    <img src="images/steppinginto crtbase.png" width="100%">
+                    <p>And now step into this one I have highlighted</p>
+                    <img src="images/steppinganotercrtbase.png" width="100%">
+                    <p>You can now see we have this really long function with some jumps. </p>
+                    <img src="images/secondcrtbaselongfunc.gif" width="100%">
+                    <p>We're going to step down until the 4th to last call to ucrt, and then step into that function</p>
+                    <img src="images/3rdcrtbase.png" width="100%">
+                    <p>Now step down and into the last call to ucrt function</p>
+                    <img src="images/3rdsdtepfunctionwhole.png" width="100%">
+                    <p>Now this function is interesting because it has a bunch of jumps and its comparing al to 0xA. Al is the last two bits of the RAX register, and 0xA is the hexidecimal for the \n character. Go ahead and set a breakpoint on the cmp rbx,rsi above that compare.</p>
+                    <img src="images/cmploop5th.png" width="100%">
+                    <p>Go ahead and starting click run, you will see it is consistently looping, if you look in the top right, RAX is changing just those last two bits. This is because it is reading our msg variable and checking for a new line. It goes character by character reading and checking it hasn't reached a new line and if it does it knows to move forward with the program. You can see this because of the je instruction right after the compare. That is if the cmp al, 0xA is successful them jmp, je = jump if equals.</p>
+                    <img src="images/loopcompare.gif" width="100%">
+                    <p>Here you can see the jump it makes once it reaches the end of our character array. This will finish reading the array from memory and now it has been prepped to be written. You can see right after this segment of code, the WriteFile function is called. Lets step down and into that function. </p>
+                    <img src="images/writefile.png" width="100%">
+                    <p>A little background on the WriteFile function, it is apart of the Windows API and is used to write data to a file or in our case an I/O device. Remember the original printf function and how it intialized the I/O stream witht eh arct_iob_function? This is where this will come in to play since it was intialized. Inside that function of course is the lower level kernel32.dll's function NtWriteFile.</p>
+                    <img src="images/kernall32writefile.png" width="100%">
+                    <p>For even more background WriteFile is apart of the Windows API, and NtWriteFile is apart of the NT API (Native). WriteFile is a higher level version of the function in C to perform writing to files or I/O devices. NtWriteFile is lower level and closer to the kernel. This has a more direct interface to the kernel and typically isn't used directly by applications. While its direct and more efficient it is not as user friendly and lacks some things such as error handling. This is why it is wrapped in the WriteFile function.</p>
+                    <img src="images/ntwritefile.png" width="100%">
+                    <p>And if we step into the NtWriteFile function here we will see the direct interaction and SYSCALL to write our character array to our I/O Stream that is to the console.</p>
+                    <img src="images/syscall.png" width="100%">
+                    <p>Now go ahead and start stepping over, you will hit a bunch of returns. It will eventually pull you out all the way back to our original program in assembly. You can see how many layers of abstraction there are between different functions and windows dlls. Once back at the original code, you can see on the right hand side "pause" has been loaded into the address shown. Here it is being prepped to be executed for the system function call.</p>
+                    <img src="images/pause.png" width="100%">
+                    <p>
+                        As you step through the rest of the code you will now see the prompt waiting for user input on the system function. As a little bonus beneath, you can view our c program in assembly and in machine code both hex and binary.
+                    </p>
+                    <h2>Assembly</h2>
+                    <div class="code-box">
+                        <p>push rbp</p>
+                        <p>mov rbp,rsp</p>
+                        <p>sub rsp,30</p>
+                        <p>mov dword ptr ss:[rbp+10],ecx</p>
+                        <p>mov qword ptr ss:[rbp+18],rdx</p>
+                        <p>call printf.0x(MemAddr)</p>
+                        <p>mov rax,0x(MemAddr)</p>
+                        <p>mov qword ptr ss:[rbp-E],rax</p>
+                        <p>lea rax,qword ptr ss:[rbp-E]</p>
+                        <p>mov rcv,rax</p>
+                        <p>call printf.0x(MemAddr)</p>
+                        <p>lea rax,qword ptr ds:[MemAddr]</p>
+                        <p>mov rcv,rax</p>
+                        <p>call &lt;JMP.&system&gt;</p>
+                        <p>mov eax,0</p>
+                        <p>add rsp,30</p>
+                        <p>pop rbp</p>
+                        <p>ret</p>
+                    </div>
+                    <h2>Machine Code - Hexadecimal</h2>
+                    <div class="code-box">
+                        <p>48 89 E5</p>
+                        <p>48 83 EC 30</p>
+                        <p>89 4D 10</p>
+                        <p>48 89 55 18</p>
+                        <p>E8 03 01 00 00</p>
+                        <p>48 B8 48 65 6C 6C 6F 20 77 6F</p>
+                        <p>48 89 45 F2</p>
+                        <p>48 B8 77 6F 72 6C 64 21 00 00</p>
+                        <p>48 89 45 F8</p>
+                        <p>48 8D 45 F2</p>
+                        <p>48 89 C1</p>
+                        <p>E8 04 17 00 00</p>
+                        <p>48 8D 05 3D 39 00 00</p>
+                        <p>48 89 C1</p>
+                        <p>E8 ED 1A 00 00</p>
+                        <p>B8 00 00 00 00</p>
+                        <p>48 83 C4 30</p>
+                        <p>5D</p>
+                        <p>C3</p>
+                    </div>
+                    <h2>Machine Code - Binary</h2>
+                    <div class="code-box">
+                        <p>01010101010010001000100111100101010010001000001111101100001100001000100101001101000100000100<br>10001000100101010101000110001110100000000011000000010000000000000000010010001011100001001<br>00001100101011011000110110001101111001000000111011101101111010010001000100101000101111100100100<br>100010111000011101110110111101110010011011000110010000100001000000000000000001001000100010010<br>100010111111000010010001000110101000101111100100100100010001001110000011110100000000100000101<br>110000000000000000010010001000110100000101001111010011100100000000000000000100100010001<br>001110000011110100011101101000110100000000000000000101110000000000000000000000000000000000<br>0010010001000001111000100001100000101110111000011</p>
+                    </div>
+                </div>
+
+
+
+                <li onclick="togglePanel('feature2')">If Statements</li>
+                <div id="feature2" class="panel">
+                    <p>It's not ready come back later.</p>
+                </div>
+                <li onclick="togglePanel('feature3')">Topic 3</li>
+                <div id="feature3" class="panel">
+                    <p>Nope still not ready either, please come back at another time.</p>
+                </div>
+                <li onclick="togglePanel('feature4')">Cracking A Password</li>
+                <div id="feature4" class="panel">
+                    <p>Really you thought this one was going to be ready?</p>
+                </div>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <div class="ticker-text">
+                <a href="#">Contact me with job opportunies at jackroth49@gmail.com | This website is intended to be ugly and stupid | TO-DO: Add music that autoplays and you cannot turn off </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePanel(featureId) {
+            var panel = document.getElementById(featureId);
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
